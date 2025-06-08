@@ -1,0 +1,24 @@
+{
+  "name": "ebac-mod-18-sorteador-de-numero",
+  "version": "1.0.0",
+  "description": "Neste exercício você deverá:\r 1) Criar um arquivo Gruntfile;\r 2) Executar a compilação do LESS;\r 3) Executar a compressão de código JavaScript;\r 4) Criar um branch chamada \"exercicio_grunt\";\r 5) Armazenar o arquivo Gruntfile nesta branch;\r 6) Enviar o link do repositório através da plataforma.",
+  "main": "index.js",
+  "scripts": {
+    "grunt": "grunt",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LorranFranklin/EBAC-MOD-18-SORTEADOR-DE-NUMERO.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LorranFranklin/EBAC-MOD-18-SORTEADOR-DE-NUMERO/issues"
+  },
+  "homepage": "https://github.com/LorranFranklin/EBAC-MOD-18-SORTEADOR-DE-NUMERO#readme",
+  "devDependencies": {
+    "grunt": "^1.6.1",
+    "grunt-contrib-less": "^3.0.0"
+  }
+}
