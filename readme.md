@@ -42,7 +42,7 @@ Fazendo a configuração da tarefa, antes preisamos carregar o plugin no arquivo
 // Load the plugins
   grunt.loadNpmTasks('grunt-contrib-less');  // For compiling LESS files
 ```
-
+## Criando branch como pedido na tarefa, ```exercicio_grunt```
 ```
 
 ```
