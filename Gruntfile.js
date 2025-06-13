@@ -5,7 +5,7 @@ module.exports = function (grunt) {
     less: {
       development: {
         files: {
-          'main.css': 'main.less',
+          'dev/styles/main.css': 'src/styles/main.less',
         },
       },
       production: {
@@ -13,7 +13,7 @@ module.exports = function (grunt) {
           compress: true,
         },
         files: {
-          'main.min.css': 'main.less',
+          'dist/styles/main.min.css': 'src/styles/main.less',
         },
       },
     },
@@ -24,5 +24,6 @@ module.exports = function (grunt) {
   // grunt.loadNpmTasks('grunt-contrib-uglify'); // For minifying JavaScript files
 
   // Default task(s).
-  grunt.registerTask('default', ['less']);
+  grunt.registerTask('default', ['less:development']);
+  grunt.registerTask('build', ['less:production']);
 };
