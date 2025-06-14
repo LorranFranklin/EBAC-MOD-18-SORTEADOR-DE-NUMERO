@@ -75,3 +75,15 @@ pasta `dev` de desenvolvimento, onde estaremos a fazer nossas atividades e mudan
     "test": "echo \"Error: no test specified\" && exit 1"
   },
 ```
+
+## Instalando puglin de watch
+
+```
+npm install --save-dev grunt-contrib-watch
+```
+
+importando/Carregando puglin no gruntFile
+
+```
+  grunt.loadNpmTasks('grunt-contrib-watch'); // For watching file changes
+```

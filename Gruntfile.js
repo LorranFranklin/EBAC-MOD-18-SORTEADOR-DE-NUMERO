@@ -17,13 +17,23 @@ module.exports = function (grunt) {
         },
       },
     },
+    watch: {
+      less: {
+        files: ['src/styles/**/*.less'], // Watch all LESS files in the src/styles directory
+        tasks: ['less:development'], // Run the development task when a file changes
+        options: {
+          spawn: false, // Do not spawn a new process for each change
+        },
+      },
+    },
   });
 
   // Load the plugins
   grunt.loadNpmTasks('grunt-contrib-less'); // For compiling LESS files
+  grunt.loadNpmTasks('grunt-contrib-watch'); // For watching file changes
   // grunt.loadNpmTasks('grunt-contrib-uglify'); // For minifying JavaScript files
 
   // Default task(s).
-  grunt.registerTask('default', ['less:development']);
+  grunt.registerTask('default', ['watch']);
   grunt.registerTask('build', ['less:production']);
 };
