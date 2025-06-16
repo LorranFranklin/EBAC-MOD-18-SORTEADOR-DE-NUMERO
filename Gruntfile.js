@@ -1,3 +1,5 @@
+const { option } = require('grunt');
+
 module.exports = function (grunt) {
   // Project configuration.
   grunt.initConfig({
@@ -26,11 +28,32 @@ module.exports = function (grunt) {
         },
       },
     },
+    replace: {
+      dev: {
+        options: {
+          patterns: [
+            {
+              match: 'ENDERECO_DO_CSS',
+              replacement: './styles/main.css',
+            },
+          ],
+        },
+        files: [
+          {
+            expand: true,
+            flatten: true,
+            src: ['dev/index.html'],
+            dest: 'dev/',
+          },
+        ],
+      },
+    },
   });
 
   // Load the plugins
   grunt.loadNpmTasks('grunt-contrib-less'); // For compiling LESS files
   grunt.loadNpmTasks('grunt-contrib-watch'); // For watching file changes
+  grunt.loadNpmTasks('grunt-replace'); // For replacing text in files
   // grunt.loadNpmTasks('grunt-contrib-uglify'); // For minifying JavaScript files
 
   // Default task(s).

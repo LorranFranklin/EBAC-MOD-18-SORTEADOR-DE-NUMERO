@@ -87,3 +87,54 @@ importando/Carregando puglin no gruntFile
 ```
   grunt.loadNpmTasks('grunt-contrib-watch'); // For watching file changes
 ```
+
+## Instalando puglin
+
+```
+ npm install --save-dev grunt-replace
+```
+
+Carregando puglin
+
+```
+  // Load the plugins
+  grunt.loadNpmTasks('grunt-contrib-less'); // For compiling LESS files
+  grunt.loadNpmTasks('grunt-contrib-watch'); // For watching file changes
+  grunt.loadNpmTasks('grunt-replace'); // For replacing text in files
+  // grunt.loadNpmTasks('grunt-contrib-uglify'); // For minifying JavaScript files
+
+  // Default task(s).
+  grunt.registerTask('default', ['watch']);
+  grunt.registerTask('build', ['less:production']);
+
+```
+
+Configurando pugl in
+
+```
+replace: {
+      dev: {
+        options: {
+          patterns: [
+            {
+              match: 'ENDERECO_DO_CSS',
+              replacement: './styles/main.css',
+            },
+          ],
+        },
+        files: [
+          {
+            expand: true,
+            flatten: true,
+            src: ['dev/index.html'],
+            dest: 'dev/',
+          },
+        ],
+      },
+    },
+```
+Rodando o replace no terminal
+
+```
+npm run grunt replace:dev
+```
