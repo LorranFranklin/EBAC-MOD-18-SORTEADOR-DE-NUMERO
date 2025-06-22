@@ -133,8 +133,166 @@ replace: {
       },
     },
 ```
+
 Rodando o replace no terminal
 
 ```
 npm run grunt replace:dev
+```
+
+## instalando minificador de html
+
+```
+npm install --save-dev grunt-contrib-htmlmin
+```
+
+Carregar o puglin no arquivo gruntFile
+
+```
+  grunt.loadNpmTasks('grunt-contrib-htmlmin'); // For minifying HTML files
+```
+
+Configurando o minificador, aqui criaremos uma pasta temporaria `prebuild`
+
+```
+htmlmin: {
+      dist: {
+        options: {
+          removeComments: true,
+          collapseWhitespace: true,
+        },
+        files: {
+          'prebuild/index.html': 'src/index.html', // Destination file
+        },
+      },
+    },
+```
+
+Comando para rodar no terminal
+
+```
+ npm run grunt htmlmin:dist
+```
+
+Vamos mudar o css
+
+```
+ dist: {
+        options: {
+          patterns: [
+            {
+              match: 'ENDERECO_DO_CSS',
+              replacement: './styles/main.min.css',
+            },
+          ],
+        },
+        files: [
+          {
+            expand: true,
+            flatten: true,
+            src: ['prebuild/index.html'],
+            dest: 'dist/',
+          },
+        ],
+      },
+```
+
+```
+  grunt.registerTask('build', ['less:production', 'htmlmin:dist', 'replace:dist']);
+```
+
+No terminal
+
+```
+npm run grunt build
+```
+
+Depois de fazermos essa execução iremos apagar a pasta temporaria `prebuild` usando um puglin
+
+## Instalando puglin
+
+```
+npm install --save-dev grunt-contrib-clean
+```
+
+Carregar Puglin
+
+```
+  grunt.loadNpmTasks('grunt-contrib-clean'); // For cleaning directories
+```
+
+Configurando puglin
+
+```
+   clean: ['prebuild'] // Clean the prebuild directory before building
+```
+
+tarefas a serem executadas
+
+```
+  // Default task(s).
+  grunt.registerTask('default', ['watch']);
+  grunt.registerTask('build', ['less:production', 'htmlmin:dist', 'replace:dist', 'clean']);
+```
+
+No terminal usamos
+
+```
+npm run grunt build
+```
+
+## Atualizamos o `watch`
+
+```
+watch: {
+  less: {
+    files: ['src/styles/**/*.less'], // Watch all LESS files in the src/styles directory
+    tasks: ['less:development'], // Run the development task when a file changes
+  },
+  html: {
+    files: ['src/index.html'], // Watch the main HTML file
+    tasks: ['replace:dev'], // Run the replace task when the HTML file changes
+  },
+}
+```
+
+## Instalando puglin para minificar arquivo js
+
+```
+npm install --save-dev grunt-contrib-uglify
+```
+
+carregando puglin
+
+```
+  grunt.loadNpmTasks('grunt-contrib-uglify'); // For minifying JavaScript files
+```
+
+Configurando puglin no arquivo gruntFile
+
+```
+uglify: {
+  target : {
+    files: {
+      'dist/scripts/main.min.js': ['src/scripts/main.js'], // Minify the main JavaScript file
+    },
+  },
+},
+```
+
+```
+grunt.registerTask('default', ['watch']);
+grunt.registerTask('build', [
+  'less:production',
+  'htmlmin:dist',
+  'replace:dist',
+  'clean',
+  'uglify',
+]);
+```
+
+No terminal usamos:
+
+```
+npm run grunt build
 ```
