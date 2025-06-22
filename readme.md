@@ -9,6 +9,11 @@ Neste exercício você deverá:
 5. Armazenar o arquivo Gruntfile nesta branch;
 6. Enviar o link do repositório através da plataforma.
 
+Project:
+<p align="center">
+  <img alt="projeto Meu Portfólio" src="img/readme.png" width="100%">
+</p>
+
 ## Durante o processo será feito um sorteador de números
 
 ## Iniciaremos o git e desde o começo teremos nosso projeto já hospedado no GitHub
